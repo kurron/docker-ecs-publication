@@ -43,7 +43,6 @@ apply plugin: 'maven-publish'
 description = "${artifactDescription}"
 group = "${artifactGroup}"
 
-defaultTasks = ['publishToMavenLocal']
 
 publishing {
     publications {
@@ -70,3 +69,20 @@ publishing {
         }
     }
 }
+
+def keywordMap = [ 
+    family: "${family}",
+    containerName: "${containerName}",
+    registry: "${registry}",
+    imageName: "${imageName}",
+    imageTag: "${imageTag}"
+]
+
+task copyDefinitions(type: Copy) {
+  from 'templates'
+  include '*.template'
+  into 'build/definitions'
+  expand keywordMap
+}
+
+defaultTasks = ['copyDefinitions', 'publishToMavenLocal']

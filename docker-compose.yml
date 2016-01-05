@@ -5,3 +5,5 @@ ecs-publication:
     volumes:
         - /home/vagrant:/home/developer
     user: 1000:1000
+    environment:
+        ORG_GRADLE_PROJECT_artifactGroup: org.devan
