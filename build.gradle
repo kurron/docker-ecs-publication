@@ -75,7 +75,11 @@ def keywordMap = [
     containerName: "${containerName}",
     registry: "${registry}",
     imageName: "${imageName}",
-    imageTag: "${imageTag}"
+    imageTag: "${imageTag}",
+    clusterName: "${clusterName}",
+    serviceName: "${serviceName}",
+    loadBalancerName: "${loadBalancerName}",
+    clientToken: "BOB"
 ]
 
 task copyDefinitions(type: Copy) {
