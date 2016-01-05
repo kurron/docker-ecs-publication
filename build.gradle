@@ -1,0 +1,72 @@
+repositories {
+    jcenter()
+}
+
+class ProjectVersion {
+    Integer major
+    Integer minor
+    Integer patch
+    String  branch
+
+    ProjectVersion( Integer major, Integer minor, Integer patch, String branch ) {
+        this.major = major
+        this.minor = minor
+        this.patch = patch
+        this.branch = branch
+    }
+
+    @Override
+    String toString() {
+        String release = '-SNAPSHOT'
+        if ( branch == 'master' ) {
+            release = '.RELEASE'
+        }
+        else if ( branch == 'development' ) {
+            release = '.MILESTONE'
+        }
+        "${major}.${minor}.${patch}${release}"
+    }
+}
+
+version = new ProjectVersion( major.toInteger(), minor.toInteger(), patch.toInteger(), branch.toString() )
+
+task printVersion() {
+    group = 'Help'
+    description = 'Prints project version'
+    doLast {
+        logger.quiet "Version: ${version}"
+    }
+}
+
+apply plugin: 'maven-publish'
+
+description = "${artifactDescription}"
+group = "${artifactGroup}"
+
+defaultTasks = ['publishToMavenLocal']
+
+publishing {
+    publications {
+        mavenPublish( MavenPublication ) {
+            artifact source: "$projectDir/README.md", classifier: 'task-definition', extension: 'md'
+        }
+    }
+
+    repositories {
+        maven {
+            if ( 'master' == branch ) {
+                url=releaseURL
+            }
+            else if ( 'development' == branch ) {
+                url=milestoneURL
+            }
+            else {
+                url='Not set - only master and development branches should be published!'
+            }
+            credentials {
+                username=publishUsername 
+                password=publishPassword 
+            }
+        }
+    }
+}
