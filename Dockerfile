@@ -2,16 +2,17 @@ FROM kurron/docker-jetbrains-base:latest
 
 MAINTAINER Ron Kurr <kurr@kurron.org>
 
-LABEL org.kurron.ide.name="Intellij IDEA" org.kurron.ide.version=15.0.2
+ADD https://services.gradle.org/distributions/gradle-2.10-bin.zip /tmp/gradle.zip
 
-ADD https://download.jetbrains.com/idea/ideaIU-15.0.2.tar.gz /tmp/ide.tar.gz
+RUN apt-get --quiet update && \
+    apt-get --quiet --yes install unzip && \
+    apt-get clean && \
+    unzip /tmp/gradle.zip -d /opt && \
+    rm /tmp/gradle.zip
 
-RUN mkdir -p /opt/ide && \
-    tar zxvf /tmp/ide.tar.gz --strip-components=1 -C /opt/ide && \
-    rm /tmp/ide.tar.gz
-
-ENV IDEA_JDK=/usr/lib/jvm/oracle-jdk-8
+ENV GRADLE_HOME=/opt/gradle-2.10
+ENV PATH $PATH:$GRADLE_HOME/bin
 
 USER developer:developer
 WORKDIR /home/developer
-ENTRYPOINT ["/opt/ide/bin/idea.sh"]
+ENTRYPOINT ["gradle", "--version"]
