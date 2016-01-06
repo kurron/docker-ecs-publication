@@ -79,7 +79,8 @@ def keywordMap = [
     clusterName: "${clusterName}",
     serviceName: "${serviceName}",
     loadBalancerName: "${loadBalancerName}",
-    clientToken: "BOB"
+    clientToken: "BOB",
+    ecsInstanceRole: "${ecsInstanceRole}"
 ]
 
 task copyDefinitions(type: Copy) {
