@@ -47,7 +47,13 @@ group = "${artifactGroup}"
 publishing {
     publications {
         mavenPublish( MavenPublication ) {
-            artifact source: "$projectDir/README.md", classifier: 'task-definition', extension: 'md'
+            artifact source: "build/definitions/service-definition.template", classifier: 'service-definition', extension: 'json'
+        }
+        mavenPublish( MavenPublication ) {
+            artifact source: "build/definitions/service-update.template", classifier: 'service-update', extension: 'json'
+        }
+        mavenPublish( MavenPublication ) {
+            artifact source: "build/definitions/task-definition.template", classifier: 'task-definition', extension: 'json'
         }
     }
 
@@ -85,7 +91,7 @@ def keywordMap = [
 ]
 
 task copyDefinitions(type: Copy) {
-  from 'templates'
+  from '/templates'
   include '*.template'
   into 'build/definitions'
   expand keywordMap
