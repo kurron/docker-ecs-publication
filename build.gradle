@@ -85,7 +85,7 @@ def keywordMap = [
     clusterName: "${clusterName}",
     serviceName: "${serviceName}",
     loadBalancerName: "${loadBalancerName}",
-    clientToken: "BOB",
+    clientToken: java.util.UUID.randomUUID().toString(),
     ecsInstanceRole: "${ecsInstanceRole}",
     desiredCount: "${desiredCount}"
 ]
