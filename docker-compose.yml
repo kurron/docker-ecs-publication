@@ -8,9 +8,10 @@ ecs-publication:
     user: 1000:1000
     environment:
         ORG_GRADLE_PROJECT_artifactGroup: org.kurron
-        ORG_GRADLE_PROJECT_major: 1
-        ORG_GRADLE_PROJECT_minor: 2
-        ORG_GRADLE_PROJECT_patch: 3
+        ORG_GRADLE_PROJECT_artifactID: tara
+        ORG_GRADLE_PROJECT_major: 4
+        ORG_GRADLE_PROJECT_minor: 5
+        ORG_GRADLE_PROJECT_patch: 6
         ORG_GRADLE_PROJECT_branch: development
 
         ORG_GRADLE_PROJECT_releaseURL: http://192.168.254.81:81/artifactory/transparent-release

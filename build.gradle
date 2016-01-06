@@ -46,13 +46,16 @@ group = "${artifactGroup}"
 
 publishing {
     publications {
-        mavenPublish( MavenPublication ) {
+        serviceDefinition( MavenPublication ) {
+            artifactId = "${artifactID}"
             artifact source: "build/definitions/service-definition.template", classifier: 'service-definition', extension: 'json'
         }
-        mavenPublish( MavenPublication ) {
+        serviceUpdate( MavenPublication ) {
+            artifactId = "${artifactID}"
             artifact source: "build/definitions/service-update.template", classifier: 'service-update', extension: 'json'
         }
-        mavenPublish( MavenPublication ) {
+        taskDefinition( MavenPublication ) {
+            artifactId = "${artifactID}"
             artifact source: "build/definitions/task-definition.template", classifier: 'task-definition', extension: 'json'
         }
     }
