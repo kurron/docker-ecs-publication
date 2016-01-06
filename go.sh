@@ -10,6 +10,7 @@ export ORG_GRADLE_PROJECT_serviceName=Golf
 export ORG_GRADLE_PROJECT_loadBalancerName=Hotel
 export ORG_GRADLE_PROJECT_clientToken=India
 export ORG_GRADLE_PROJECT_ecsInstanceRole=Juliett
+export ORG_GRADLE_PROJECT_desiredCount=Kilo
 
 rm -rf build 
 gradle

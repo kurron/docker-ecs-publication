@@ -80,7 +80,8 @@ def keywordMap = [
     serviceName: "${serviceName}",
     loadBalancerName: "${loadBalancerName}",
     clientToken: "BOB",
-    ecsInstanceRole: "${ecsInstanceRole}"
+    ecsInstanceRole: "${ecsInstanceRole}",
+    desiredCount: "${desiredCount}"
 ]
 
 task copyDefinitions(type: Copy) {
