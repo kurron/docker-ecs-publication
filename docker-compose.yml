@@ -3,9 +3,7 @@ ecs-publication:
     container_name: "ecs-publication"
     net: "host"
     volumes:
-        - /home/vagrant:/home/developer
         - /home/vagrant/GitHub/docker-ecs-publication/templates:/templates
-    user: 1000:1000
     environment:
         ORG_GRADLE_PROJECT_artifactGroup: org.kurron
         ORG_GRADLE_PROJECT_artifactID: tara
@@ -27,7 +25,6 @@ ecs-publication:
         ORG_GRADLE_PROJECT_clusterName: Foxtrot
         ORG_GRADLE_PROJECT_serviceName: Golf
         ORG_GRADLE_PROJECT_loadBalancerName: Hotel
-        ORG_GRADLE_PROJECT_clientToken: India
         ORG_GRADLE_PROJECT_ecsInstanceRole: Juliett
         ORG_GRADLE_PROJECT_desiredCount: Kilo
 
