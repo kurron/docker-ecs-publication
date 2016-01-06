@@ -1,4 +1,4 @@
-FROM kurron/docker-jetbrains-base:latest
+FROM kurron/docker-oracle-jdk-8:latest
 
 MAINTAINER Ron Kurr <kurr@kurron.org>
 
@@ -8,17 +8,23 @@ RUN apt-get --quiet update && \
     apt-get --quiet --yes install unzip && \
     apt-get clean && \
     unzip /tmp/gradle.zip -d /opt && \
-    mkdir -p /opt/ecs-publication && \
-    chown developer:developer /opt/ecs-publication && \
     rm /tmp/gradle.zip
 
 ENV GRADLE_HOME=/opt/gradle-2.10
+ENV GRADLE_USER_HOME=/tmp
+ENV GRADLE_OPTS=-Dorg.gradle.native=false -Duser.name=root -Duser.home=/tmp -Duser.dir=/tmp
 ENV PATH $PATH:$GRADLE_HOME/bin
+
+COPY gradle.properties /tmp
+COPY build.gradle /tmp
 
 VOLUME ["/templates"]
 
-USER developer:developer
-WORKDIR /opt/ecs-publication
-COPY gradle.properties /opt/ecs-publication
-COPY build.gradle /opt/ecs-publication
-ENTRYPOINT ["gradle"]
+#WORKDIR /opt/ecs-publication
+WORKDIR /tmp
+
+ENV HOME=/tmp
+ENV USER=root
+USER root:root
+
+ENTRYPOINT ["gradle", "--info", "--stacktrace", "--build-file", "/tmp/build.gradle", "--project-dir", "/tmp", "--project-cache-dir", "/tmp"]
