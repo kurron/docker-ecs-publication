@@ -97,4 +97,4 @@ task copyDefinitions(type: Copy) {
   expand keywordMap
 }
 
-defaultTasks = ['copyDefinitions', 'publishToMavenLocal']
+defaultTasks = ['copyDefinitions', 'publishToMavenLocal', 'publish']

@@ -11,7 +11,13 @@ ecs-publication:
         ORG_GRADLE_PROJECT_major: 1
         ORG_GRADLE_PROJECT_minor: 2
         ORG_GRADLE_PROJECT_patch: 3
-        ORG_GRADLE_PROJECT_branch: master
+        ORG_GRADLE_PROJECT_branch: development
+
+        ORG_GRADLE_PROJECT_releaseURL: http://192.168.254.81:81/artifactory/transparent-release
+        ORG_GRADLE_PROJECT_milestoneURL: http://192.168.254.81:81/artifactory/transparent-milestone
+        ORG_GRADLE_PROJECT_publishUsername: SVNBuild
+        ORG_GRADLE_PROJECT_publishPassword: Snoopy*09
+
         ORG_GRADLE_PROJECT_family: Alpha
         ORG_GRADLE_PROJECT_containerName: Bravo
         ORG_GRADLE_PROJECT_registry: Charlie
