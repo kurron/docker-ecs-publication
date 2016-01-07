@@ -1,6 +1,6 @@
 #Overview
 This project is a simple Docker image that transforms Amazon ECS templates and publishes them to an
-artifact repository.  The idea is to make this a step in a CI pipeline.
+artifact repository.  The idea is to make this a step in a CI pipeline. 
 
 #Prerequisites
 * a working [Docker](http://docker.io) engine
