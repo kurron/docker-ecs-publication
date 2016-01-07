@@ -8,17 +8,18 @@ RUN apt-get --quiet update && \
     apt-get --quiet --yes install unzip && \
     apt-get clean && \
     unzip /tmp/gradle.zip -d /opt && \
-    rm /tmp/gradle.zip
+    rm /tmp/gradle.zip && \
+    mkdir -p /opt/project
 
 ENV GRADLE_HOME=/opt/gradle-2.10
 ENV GRADLE_OPTS=-Dorg.gradle.native=false
 ENV PATH $PATH:$GRADLE_HOME/bin
 
-COPY gradle.properties /tmp
-COPY build.gradle /tmp
+COPY gradle.properties /opt/project
+COPY build.gradle /opt/project
 
 VOLUME ["/templates"]
 
 WORKDIR /tmp
 
-ENTRYPOINT ["gradle", "--info", "--stacktrace"]
+ENTRYPOINT ["gradle", "--info", "--stacktrace", "--build-file", "/opt/project/build.gradle"]
