@@ -15,8 +15,8 @@ ENV GRADLE_HOME=/opt/gradle-2.10
 ENV GRADLE_OPTS=-Dorg.gradle.native=false
 ENV PATH $PATH:$GRADLE_HOME/bin
 
-COPY gradle.properties /opt/project
-COPY build.gradle /opt/project
+COPY gradle.properties /opt/project/gradle.properties
+COPY build.gradle /opt/project/build.gradle
 
 VOLUME ["/templates"]
 
