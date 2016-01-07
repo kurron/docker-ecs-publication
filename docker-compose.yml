@@ -21,7 +21,6 @@ ecs-publication:
         ORG_GRADLE_PROJECT_containerName: Bravo
         ORG_GRADLE_PROJECT_registry: Charlie
         ORG_GRADLE_PROJECT_imageName: Delta
-        ORG_GRADLE_PROJECT_imageTag: Echo
         ORG_GRADLE_PROJECT_clusterName: Foxtrot
         ORG_GRADLE_PROJECT_serviceName: Golf
         ORG_GRADLE_PROJECT_loadBalancerName: Hotel

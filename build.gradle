@@ -84,7 +84,7 @@ def keywordMap = [
     containerName: "${containerName}",
     registry: "${registry}",
     imageName: "${imageName}",
-    imageTag: "${imageTag}",
+    imageTag: "${version}",
     clusterName: "${clusterName}",
     serviceName: "${serviceName}",
     loadBalancerName: "${loadBalancerName}",
